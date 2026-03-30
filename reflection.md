@@ -13,6 +13,10 @@ My inital design has 4 classes, Owner, Pet, Task, Calendar. The owner should hol
 
 - Did your design change during implementation?
 - If yes, describe at least one change and why you made it.
+Task class: added a pet id to track which pet each task is for, and a frequency field for recurring tasks.
+Calendar class: Added pet id and owner id fields for more context so the calendar knows which pet/owner it is managing.
+Added a available_minutes parameter to generate_schedule().
+Added a scheduler class to handle more complex scheduling logic, with three helper methods.
 
 ---
 
