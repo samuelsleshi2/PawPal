@@ -7,6 +7,8 @@
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
+My inital design has 4 classes, Owner, Pet, Task, Calendar. The owner should hold a list of pet objects, and be able to call methods from the calendar class. The pet should have a few attributes reagrding its condition, and the tasks should be centered aroud the condition of the pet. The task class should have some fields regarding the progress towards the task being completed, and they should have a description of the task. The calendar is basically a data structure, it holds a list of tasks and can add, remove, clear, check if it's empty, etc. There is no inheritance.
+
 **b. Design changes**
 
 - Did your design change during implementation?
