@@ -4,19 +4,43 @@
 
 **a. Initial design**
 
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
-
-My inital design has 4 classes, Owner, Pet, Task, Calendar. The owner should hold a list of pet objects, and be able to call methods from the calendar class. The pet should have a few attributes reagrding its condition, and the tasks should be centered aroud the condition of the pet. The task class should have some fields regarding the progress towards the task being completed, and they should have a description of the task. The calendar is basically a data structure, it holds a list of tasks and can add, remove, clear, check if it's empty, etc. There is no inheritance.
+My initial design had 4 classes: **Owner**, **Pet**, **Task**, **Calendar**. 
+- **Owner**: Holds a list of pet objects and coordinates with calendar
+- **Pet**: Tracks condition attributes (hunger, tiredness, health status)
+- **Task**: Represents work to be done with progress tracking and completion status
+- **Calendar**: Data structure holding task list with basic CRUD operations (add, remove, clear, etc.)
+- **No inheritance** — All classes independent
 
 **b. Design changes**
 
-- Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
-Task class: added a pet id to track which pet each task is for, and a frequency field for recurring tasks.
-Calendar class: Added pet id and owner id fields for more context so the calendar knows which pet/owner it is managing.
-Added a available_minutes parameter to generate_schedule().
-Added a scheduler class to handle more complex scheduling logic, with three helper methods.
+**Major additions during implementation:**
+
+1. **Scheduler Class** (NEW) — Extracted complex scheduling logic from Calendar into dedicated Scheduler class with:
+   - `generate_schedule()` — Orchestrates full pipeline
+   - `sort_by_priority()` and `sort_by_time()` — Multiple sorting strategies
+   - `detect_simultaneous_tasks()` — Conflict detection with severity levels
+   - `resolve_conflicts()` — Non-destructive conflict resolution
+
+2. **Task Class Enhancements**:
+   - Added `pet_id` — Track which pet each task belongs to
+   - Added `frequency` field — Support daily/weekly recurrence
+   - Added `next_task_id` — Link recurrence chain for task lifecycle
+   - Added `scheduled_time` — Store assigned time slot (minutes from midnight)
+   - Added `time_window` — Support time preferences (morning/afternoon/evening)
+   - Added `mark_complete()` → Returns next Task for recurring tasks
+   - Added `create_next_occurrence()` — Auto-generate next day/week tasks
+
+3. **Calendar Class Enhancements**:
+   - Added `pet_id` and `owner_id` — Optional context tracking
+   - Extended filter methods — `filter_tasks_by_pet()`, `filter_tasks_by_status()`, `filter_tasks_by_pet_and_status()`
+   - Delegates to Scheduler — No longer handles scheduling internally
+
+**Why:** The Scheduler class was added to separate concerns — calendars manage data, schedulers handle algorithms. This enables:
+- Testing complex scheduling in isolation (20 comprehensive tests)
+- Extensibility for different scheduling algorithms
+- Cleaner, more maintainable architecture
+
+See [UML_DIAGRAM.md](UML_DIAGRAM.md) for complete final architecture with all attributes and relationships.
 
 ---
 
