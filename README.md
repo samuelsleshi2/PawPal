@@ -53,3 +53,29 @@ pip install -r requirements.txt
 5. Add tests to verify key behaviors.
 6. Connect your logic to the Streamlit UI in `app.py`.
 7. Refine UML so it matches what you actually built.
+
+## Testing PawPal+
+
+### Running Tests
+
+Run the comprehensive test suite:
+
+```bash
+python -m pytest tests/test_comprehensive.py -v
+```
+
+### Test Coverage
+
+The test suite includes **20 comprehensive unit tests** organized into 5 test classes, covering:
+
+- **Sorting Correctness** (3 tests) — Verifies tasks are returned in chronological order by scheduled time
+- **Recurrence Logic** (5 tests) — Confirms daily/weekly tasks generate next occurrences and maintain date linking
+- **Conflict Detection** (5 tests) — Validates simultaneous task flagging (critical for same pet, warning for different pets)
+- **Priority-Based Scheduling** (2 tests) — Tests high→medium→low priority ordering with duration tiebreaking
+- **Time Window Respect** (5 tests) — Ensures tasks respect morning/afternoon/evening time preferences
+
+**All 20 tests passing** ✓
+
+### Confidence Level: ⭐⭐⭐⭐⭐
+
+**5/5 Stars** — The comprehensive test suite validates all critical scheduling functionality, recurring task generation, conflict detection, and time preference handling. The system reliably handles edge cases, maintains data integrity across task lifecycle operations, and provides non-destructive conflict detection without crashes.
