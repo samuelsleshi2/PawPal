@@ -22,6 +22,18 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Smarter Scheduling Features
+
+This version of PawPal+ includes intelligent scheduling enhancements:
+
+- **Smart Time-Based Sorting** — Tasks are organized chronologically by scheduled time for clear, readable schedules
+- **Flexible Filtering** — Filter tasks by pet, completion status, or both to focus on what matters
+- **Recurring Task Management** — Daily and weekly tasks automatically generate next occurrences with proper date linking
+- **Time Window Respect** — Tasks can specify preferred times (morning, afternoon, evening) and the scheduler respects these preferences
+- **Priority-Based Scheduling** — Tasks are scheduled based on priority weight and duration for optimized packing
+- **Lightweight Conflict Detection** — Non-destructive detection of simultaneous tasks (same pet = critical, different pets = warning) without crashing
+- **Efficient Bin Packing** — Greedy scheduling algorithm maximizes task fit within available time bounds
+
 ## Getting started
 
 ### Setup

@@ -31,6 +31,7 @@ Added a scheduler class to handle more complex scheduling logic, with three help
 
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
+The scheduler trades optimal time utilization for respecting time window preferences. It is worth it because it respects user preferences.
 
 ---
 
